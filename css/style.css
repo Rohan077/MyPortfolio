@@ -260,7 +260,7 @@ h1, h2, h3, h4 { font-family: var(--font-head); margin: 0; letter-spacing: -0.02
 .last-letter { position: relative; display: inline-block; }
 .tm-mark {
   position: absolute; bottom: 100%; right: -0.3em; left: auto;
-  white-space: nowrap; margin-bottom: 0.18em;
+  white-space: nowrap; margin-bottom: 0.05em;
   font-size: 0.08em; font-weight: 700; letter-spacing: 0.03em; color: #fff;
 }
 .hero h1 {
@@ -687,13 +687,13 @@ strong { font-weight: 700; color: var(--ink); }
 .modal-form input, .modal-form textarea {
   width: 100%; padding: 13px 14px; border-radius: 10px; border: 1px solid var(--line-dark);
   font-family: var(--font-body); font-size: 10px; color: var(--ink);
-  background: linear-gradient(165deg, rgba(255,255,255,0.95), var(--paper) 45%);
-  box-shadow: inset 0 1px 0 rgba(255,255,255,0.9), inset 0 0 0 1px rgba(0,0,0,0.03);
+  background: linear-gradient(165deg, color-mix(in srgb, var(--white) 80%, var(--paper)), var(--paper) 45%);
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.5), inset 0 0 0 1px rgba(0,0,0,0.03);
   transition: border-color 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 .modal-form input:focus, .modal-form textarea:focus {
   outline: none; border-color: var(--red);
-  background: linear-gradient(165deg, #fff, var(--white) 45%);
+  background: linear-gradient(165deg, var(--white), var(--white) 45%);
   box-shadow: inset 0 1px 0 rgba(255,255,255,1), inset 0 0 0 1px rgba(214,31,38,0.12), 0 0 0 3px rgba(214,31,38,0.08);
 }
 .modal-form textarea { resize: vertical; min-height: 80px; }
@@ -756,4 +756,24 @@ strong { font-weight: 700; color: var(--ink); }
   .gallery-grid { grid-template-columns: 1fr 1fr; }
   .section { padding: 56px 0; }
   .modal-box { padding: 28px 22px; }
+}
+
+/* ---------- iPhone-only fixes (WebKit on iOS; Android/desktop untouched) ---------- */
+/* -webkit-touch-callout is true only on iOS WebKit browsers, never on
+   Android Chrome or desktop browsers, so everything in this block is
+   scoped exclusively to iPhone/iPad Safari and iOS Chrome/Firefox
+   (which are WebKit under the hood on iOS). */
+@supports (-webkit-touch-callout: none) {
+  @media (max-width: 720px) {
+    /* iOS Safari's address bar makes 100vh taller than the visible
+       viewport, so hero content centers against a box bigger than
+       what's on screen. -webkit-fill-available reports the real
+       visible height instead. */
+    .hero { min-height: -webkit-fill-available; }
+    /* Defensive re-assertion: some iOS WebKit versions don't fully
+       collapse a flex item's min-height:auto to its content size. */
+    .showcase-media { min-height: 0; }
+    /* Keep the lightbox close button clear of the notch/status bar. */
+    .lightbox-close { top: calc(20px + env(safe-area-inset-top)); }
+  }
 }
