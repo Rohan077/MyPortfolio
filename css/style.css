@@ -309,7 +309,7 @@ h1, h2, h3, h4 { font-family: var(--font-head); margin: 0; letter-spacing: -0.02
 /* ---------- About ---------- */
 .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: start; }
 .about-figure {
-  position: sticky; top: 90px; border-radius: 18px; overflow: hidden;
+  position: sticky; top: 90px; max-width: 320px; margin: 0 auto; border-radius: 18px; overflow: hidden;
   border: 1px solid var(--line-dark); aspect-ratio: 4/5; background: var(--white);
 }
 .about-figure img { width: 100%; height: 100%; object-fit: cover; object-position: center 30%; }
@@ -531,7 +531,8 @@ strong { font-weight: 700; color: var(--ink); }
 .leadership-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: center; }
 .leadership-media img { width: 100%; height: auto; display: block; }
 .ig-post-card {
-  display: block; border-radius: 16px; overflow: hidden; border: 1px solid var(--line-dark);
+  display: block; max-width: 340px; margin: 0 auto; border-radius: 16px; overflow: hidden;
+  border: 1px solid var(--line-dark);
   background: var(--white); box-shadow: 0 20px 40px -24px rgba(0,0,0,0.35);
   transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
@@ -556,7 +557,7 @@ strong { font-weight: 700; color: var(--ink); }
 
 /* ---------- Testimonial ---------- */
 .testimonial-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 96px; align-items: center; }
-.testimonial-media img { width: 100%; height: auto; border-radius: 16px; border: 1px solid rgba(255,255,255,0.12); }
+.testimonial-media img { width: 100%; max-width: 320px; height: auto; margin: 0 auto; border-radius: 16px; border: 1px solid rgba(255,255,255,0.12); }
 .testimonial-copy { max-width: 480px; }
 .testimonial-copy blockquote {
   font-family: var(--font-head); font-size: clamp(18px, 2.8vw, 26px); font-weight: 600;
@@ -642,11 +643,9 @@ strong { font-weight: 700; color: var(--ink); }
 .social-row a:hover { background: var(--red); transform: translateY(-3px); }
 
 /* ---------- Footer ---------- */
-.site-footer { background: var(--black); color: rgba(255,255,255,0.5); padding: 30px 0; }
-.footer-inner { display: flex; align-items: center; justify-content: space-between; font-size: 9px; flex-wrap: wrap; gap: 12px; }
-.footer-links { display: flex; gap: 16px; }
-.footer-links a { color: rgba(255,255,255,0.5); font-size: 11px; }
-.footer-links a:hover { color: #fff; }
+.site-footer { background: var(--black); color: rgba(255,255,255,0.5); padding: 8px 0; border-top: 1px solid rgba(255,255,255,0.1); }
+.footer-inner { display: flex; align-items: center; justify-content: space-between; font-size: 9px; font-weight: 500; flex-wrap: wrap; gap: 6px; }
+.footer-quote { margin: 0; font-style: italic; color: rgba(255,255,255,0.45); }
 
 /* ---------- Lightbox ---------- */
 .lightbox {

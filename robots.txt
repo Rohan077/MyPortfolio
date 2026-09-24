@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://rohan077.github.io/MyPortfolio/sitemap.xml
+Sitemap: https://rohan077.github.io/rohan-saikia-portfolio/sitemap.xml
